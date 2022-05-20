@@ -62,8 +62,8 @@ const myContainer = document.getElementById("container");
 for (let i = 0; i < posts.length; i++) {
     let myPosts = posts[i];
 
-    myContainer.innerHTML += 
-    `<div class="post">
+    myContainer.innerHTML +=
+        `<div class="post">
     <div class="post__header">
         <div class="post-meta">                    
             <div class="post-meta__icon">
@@ -82,7 +82,7 @@ for (let i = 0; i < posts.length; i++) {
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#" data-postid="1">
+                <a class="like-button  js-like-button" href="#" data-postid="${myPosts.id}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -96,4 +96,11 @@ for (let i = 0; i < posts.length; i++) {
     `;
 };
 
+const likeButton = document.querySelector(".js-like-button");
 
+
+likeButton.addEventListener("click",
+    function () {
+        likeButton.classList.toggle('like-button--liked');
+     }
+ );
