@@ -96,11 +96,25 @@ for (let i = 0; i < posts.length; i++) {
     `;
 };
 
-const likeButton = document.querySelector(".js-like-button");
 
+const likeButton = document.querySelectorAll(".js-like-button");
+const myArrLike = [];
 
-likeButton.addEventListener("click",
-    function () {
-        likeButton.classList.toggle('like-button--liked');
-     }
- );
+likeButton.forEach((button, index) => {
+    button.addEventListener("click", 
+        function() {
+            button.classList.toggle("like-button--liked");
+            if(button.classList.contains("like-button--liked")) {
+                posts[index].likes++;
+                myArrLike.push(posts[index].id); 
+            } else {
+                posts[index].likes--;
+                myArrLike.push(posts[index].id);
+            }
+
+            let likesCounter = document.getElementById("like-counter-" + posts[index].id);
+            likesCounter.innerText = posts[index].likes;
+        }
+    )
+});
+    
